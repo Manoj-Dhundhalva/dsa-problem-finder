@@ -1,11 +1,13 @@
 import { memo } from "react";
-import { ThemeToggle } from "./components";
+import { Logo, ThemeToggle } from "./components";
+import { Flex } from "antd";
 
 function Navbar() {
   return (
-    <div>
+    <Flex align="center" justify="space-between">
+      <Logo />
       <ThemeToggle />
-    </div>
+    </Flex>
   );
 }
 

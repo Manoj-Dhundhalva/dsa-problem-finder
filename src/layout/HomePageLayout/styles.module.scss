@@ -1,0 +1,19 @@
+.homepage-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 24px;
+
+  .header,
+  .content,
+  .footer {
+    padding: 0;
+  }
+
+  .header {
+    background-color: transparent;
+  }
+}
