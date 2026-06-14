@@ -1,11 +1,20 @@
-import { ThemeProvider } from "@/contexts/theme-context";
 import { THEME } from "@/constants/ui-preferences.contants";
+import { ConfigProvider, theme } from "antd";
+import { GlobalStateProvider, useGlobalState } from "@/contexts/global";
 
 function App() {
+  const {
+    state: { uiPreferences },
+  } = useGlobalState();
+
   return (
-    <ThemeProvider defaultTheme={THEME.DARK}>
-      <button>Hello</button>
-    </ThemeProvider>
+    <GlobalStateProvider>
+      <ConfigProvider
+        theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
+      >
+        <button>Hello</button>
+      </ConfigProvider>
+    </GlobalStateProvider>
   );
 }
 
