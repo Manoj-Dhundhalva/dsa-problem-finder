@@ -1,6 +1,7 @@
 import { THEME } from "@/constants/ui-preferences.contants";
 import { ConfigProvider, theme } from "antd";
-import { GlobalStateProvider, useGlobalState } from "@/contexts/global";
+import { useGlobalState } from "@/contexts/global";
+import ThemeToggle from "@/components/ThemeToggle";
 
 function App() {
   const {
@@ -8,13 +9,12 @@ function App() {
   } = useGlobalState();
 
   return (
-    <GlobalStateProvider>
-      <ConfigProvider
-        theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
-      >
-        <button>Hello</button>
-      </ConfigProvider>
-    </GlobalStateProvider>
+    <ConfigProvider
+      theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
+    >
+      <ThemeToggle />
+      <button>Hello</button>
+    </ConfigProvider>
   );
 }
 
