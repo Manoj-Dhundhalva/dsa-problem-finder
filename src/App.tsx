@@ -1,7 +1,12 @@
+import { Suspense } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 import { THEME } from "@/constants/ui-preferences.contants";
-import { ConfigProvider, theme } from "antd";
 import { useGlobalState } from "@/contexts/global";
-import ThemeToggle from "@/components/ThemeToggle";
+import { HomePageLayout } from "@/layout";
+import { HomePage } from "@/pages";
+import { ErrorFallback, PageNotFound } from "@/components";
+import { ConfigProvider, Spin, theme } from "antd";
 
 function App() {
   const {
@@ -12,8 +17,18 @@ function App() {
     <ConfigProvider
       theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
     >
-      <ThemeToggle />
-      <button>Hello</button>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <HashRouter>
+          <Suspense fallback={<Spin />}>
+            <Routes>
+              <Route path="/" element={<HomePageLayout />}>
+                <Route index element={<HomePage />} />
+              </Route>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
+        </HashRouter>
+      </ErrorBoundary>
     </ConfigProvider>
   );
 }
