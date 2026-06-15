@@ -27,7 +27,7 @@ function ThemeToggle() {
       <Button
         color="default"
         shape="circle"
-        variant="solid"
+        variant="filled"
         icon={<SunOutlined />}
         onClick={() => setTheme(THEME.LIGHT)}
       />
@@ -38,7 +38,7 @@ function ThemeToggle() {
     <Button
       color="default"
       shape="circle"
-      variant="solid"
+      variant="filled"
       icon={<MoonOutlined />}
       onClick={() => setTheme(THEME.DARK)}
     />

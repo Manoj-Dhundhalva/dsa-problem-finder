@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { Typography } from "antd";
+import styles from "./styles.module.scss";
 
 function Logo() {
-  return <Typography.Title level={3}>DSA Problem Finder</Typography.Title>;
+  return <span className={styles["logo"]}>DSA Problem Finder</span>;
 }
 
 export default memo(Logo);
