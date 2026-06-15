@@ -2,8 +2,9 @@ import { memo, useState } from "react";
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, RATING, SORT_FIELDS, SORT_ORDER } from "./constants";
 import { utils } from "@/utils";
 import type { TFilterState } from "./types";
+import { JsonViewer } from "@/components/@common";
 import { RatingField, TagsField, StartTimeField, SortField, OffsetField, LimitField } from "./components";
-import { Form } from "antd";
+import { Flex, Form } from "antd";
 
 function HomePage() {
   const [filterState, setFilterState] = useState<TFilterState>(() => ({
@@ -28,31 +29,35 @@ function HomePage() {
     };
 
   return (
-    <Form layout="horizontal" labelCol={{ span: 2 }}>
-      <Form.Item label="Tags">
-        <TagsField tags={filterState.tags} onChange={handleFieldChange("tags")} />
-      </Form.Item>
+    <Flex vertical>
+      <Form layout="horizontal" labelCol={{ span: 2 }} labelAlign="left">
+        <Form.Item label="Tags">
+          <TagsField tags={filterState.tags} onChange={handleFieldChange("tags")} />
+        </Form.Item>
 
-      <Form.Item label="Ratings">
-        <RatingField ratings={filterState.ratings} onChange={handleFieldChange("ratings")} />
-      </Form.Item>
+        <Form.Item label="Ratings">
+          <RatingField ratings={filterState.ratings} onChange={handleFieldChange("ratings")} />
+        </Form.Item>
 
-      <Form.Item label="Start Time">
-        <StartTimeField startTime={filterState.startTime} onChange={handleFieldChange("startTime")} />
-      </Form.Item>
+        <Form.Item label="Start Time">
+          <StartTimeField startTime={filterState.startTime} onChange={handleFieldChange("startTime")} />
+        </Form.Item>
 
-      <Form.Item label="Sort By">
-        <SortField sort={filterState.sort} onChange={handleFieldChange("sort")} />
-      </Form.Item>
+        <Form.Item label="Sort By">
+          <SortField sort={filterState.sort} onChange={handleFieldChange("sort")} />
+        </Form.Item>
 
-      <Form.Item label="Offset">
-        <OffsetField offset={filterState.offset} onChange={handleFieldChange("offset")} />
-      </Form.Item>
+        <Form.Item label="Offset">
+          <OffsetField offset={filterState.offset} onChange={handleFieldChange("offset")} />
+        </Form.Item>
 
-      <Form.Item label="Limit">
-        <LimitField limit={filterState.limit} onChange={handleFieldChange("limit")} />
-      </Form.Item>
-    </Form>
+        <Form.Item label="Limit">
+          <LimitField limit={filterState.limit} onChange={handleFieldChange("limit")} />
+        </Form.Item>
+      </Form>
+
+      <JsonViewer code={JSON.stringify(filterState, null, 2)} />
+    </Flex>
   );
 }
 

@@ -1,0 +1,13 @@
+.json-viewer {
+  .copy-button-container {
+    position: relative;
+
+    .copy-button {
+      min-width: 100px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+  }
+}

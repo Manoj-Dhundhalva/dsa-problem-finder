@@ -11,8 +11,8 @@ function LimitField({ limit, onChange }: TProps) {
   return (
     <InputNumber
       style={{ minWidth: "240px" }}
-      min={0}
-      defaultValue={0}
+      min={1}
+      defaultValue={10}
       placeholder="e.g. 20"
       value={limit}
       onChange={(value) => {
