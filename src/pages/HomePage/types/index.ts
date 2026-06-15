@@ -14,7 +14,7 @@ export type TSort = {
 export type TFilterState = {
   tags: TProblemTag[];
   ratings: [number, number];
-  startTime?: [number, number];
+  startTime: [number, number];
   sort: TSort;
   offset: number;
   limit: number;
