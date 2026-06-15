@@ -66,6 +66,7 @@ function JsonViewer({ code }: TProps) {
           });
         }}
         options={{
+          fontFamily: "Martian Mono",
           readOnly: true,
           domReadOnly: true,
           minimap: { enabled: false },
