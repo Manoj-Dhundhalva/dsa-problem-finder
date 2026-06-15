@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, RATING, SORT_FIELDS, SORT_ORDER } from "./constants";
 import { utils } from "@/utils";
 import type { TFilterState } from "./types";
-import { RatingField, TagsField, StartTimeField, SortField } from "./components";
+import { RatingField, TagsField, StartTimeField, SortField, OffsetField, LimitField } from "./components";
 import { Form } from "antd";
 
 function HomePage() {
@@ -43,6 +43,14 @@ function HomePage() {
 
       <Form.Item label="Sort By">
         <SortField sort={filterState.sort} onChange={handleFieldChange("sort")} />
+      </Form.Item>
+
+      <Form.Item label="Offset">
+        <OffsetField offset={filterState.offset} onChange={handleFieldChange("offset")} />
+      </Form.Item>
+
+      <Form.Item label="Limit">
+        <LimitField limit={filterState.limit} onChange={handleFieldChange("limit")} />
       </Form.Item>
     </Form>
   );
