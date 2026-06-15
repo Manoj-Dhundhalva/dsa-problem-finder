@@ -2,7 +2,7 @@ import { memo, useState } from "react";
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, RATING, SORT_FIELDS, SORT_ORDER } from "./constants";
 import { utils } from "@/utils";
 import type { TFilterState } from "./types";
-import { RatingField, TagsField, StartTimeField } from "./components";
+import { RatingField, TagsField, StartTimeField, SortField } from "./components";
 import { Form } from "antd";
 
 function HomePage() {
@@ -11,7 +11,7 @@ function HomePage() {
     ratings: [RATING.MIN, RATING.MAX],
     startTime: [utils.date.getEpochSecondsForDate("2010-01-01T00:00:00Z"), utils.date.getCurrentEpochSeconds()],
     sort: {
-      field: SORT_FIELDS.START_TIME,
+      field: SORT_FIELDS.START_TIME.value,
       order: SORT_ORDER.DESC,
     },
     offset: DEFAULT_OFFSET,
@@ -39,6 +39,10 @@ function HomePage() {
 
       <Form.Item label="Start Time">
         <StartTimeField startTime={filterState.startTime} onChange={handleFieldChange("startTime")} />
+      </Form.Item>
+
+      <Form.Item label="Sort By">
+        <SortField sort={filterState.sort} onChange={handleFieldChange("sort")} />
       </Form.Item>
     </Form>
   );

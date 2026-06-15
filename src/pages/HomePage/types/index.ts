@@ -4,7 +4,7 @@ export type TProblemTag = (typeof PROBLEM_TAGS)[keyof typeof PROBLEM_TAGS];
 
 export type TSortOrder = (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
 
-export type TSortField = (typeof SORT_FIELDS)[keyof typeof SORT_FIELDS];
+export type TSortField = (typeof SORT_FIELDS)[keyof typeof SORT_FIELDS]["value"];
 
 export type TSort = {
   field: TSortField;

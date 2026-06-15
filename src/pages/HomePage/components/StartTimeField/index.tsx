@@ -22,6 +22,7 @@ function StartTimeField({ startTime, onChange }: TProps) {
             const epoch = date?.unix() ?? utils.date.getEpochSecondsForDate("2010-01-01T00:00:00Z");
             onChange((prev) => [epoch, prev[1]]);
           }}
+          allowClear={false}
         />
       </Flex>
 
@@ -38,6 +39,7 @@ function StartTimeField({ startTime, onChange }: TProps) {
             const epoch = date?.unix() ?? utils.date.getCurrentEpochSeconds();
             onChange((prev) => [prev[0], epoch]);
           }}
+          allowClear={false}
         />
       </Flex>
     </Flex>

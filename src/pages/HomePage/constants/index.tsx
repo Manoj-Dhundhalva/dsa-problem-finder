@@ -45,8 +45,8 @@ export const SORT_ORDER = {
 } as const;
 
 export const SORT_FIELDS = {
-  RATINGS: "ratings",
-  START_TIME: "startTime",
+  RATINGS: { value: "ratings", label: "Ratings" },
+  START_TIME: { value: "startTime", label: "Start Time" },
 } as const;
 
 export const RATING = {
