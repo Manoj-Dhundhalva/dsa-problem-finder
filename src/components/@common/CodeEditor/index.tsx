@@ -75,9 +75,6 @@ function CodeViewer({ code, language = EDITOR_LANGUAGE.JAVASCRIPT }: TProps) {
           wordWrap: "on",
           scrollBeyondLastLine: false,
           tabSize: 2,
-          scrollbar: {
-            alwaysConsumeMouseWheel: false,
-          },
         }}
       />
     </Flex>
