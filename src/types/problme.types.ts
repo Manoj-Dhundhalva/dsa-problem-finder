@@ -1,0 +1,22 @@
+export type TProblem = {
+  contestId: number;
+  contestName: string;
+  startTime: number;
+  type: string;
+  problemIndex: string;
+  title: string;
+  rating: number;
+  tags: string[];
+  timeLimitValue: number;
+  timeLimitUnit: string;
+  memoryLimitValue: number;
+  memoryLimitUnit: string;
+  problemStatement: string;
+  inputSpecification: string;
+  outputSpecification: string;
+  inputTestCase: string;
+  outputTestCase: string;
+  solutions: string[];
+  note: string;
+  editorialUrl: string;
+};

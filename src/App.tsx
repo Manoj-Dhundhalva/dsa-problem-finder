@@ -14,10 +14,10 @@ function App() {
   } = useGlobalState();
 
   return (
-    <ConfigProvider
-      theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
-    >
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ConfigProvider
+        theme={{ algorithm: uiPreferences.theme === THEME.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm }}
+      >
         <HashRouter>
           <Suspense fallback={<Spin />}>
             <Routes>
@@ -28,8 +28,8 @@ function App() {
             </Routes>
           </Suspense>
         </HashRouter>
-      </ErrorBoundary>
-    </ConfigProvider>
+      </ConfigProvider>
+    </ErrorBoundary>
   );
 }
 
