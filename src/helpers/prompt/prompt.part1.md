@@ -85,5 +85,3 @@ You are a senior technical interviewer at a top-tier IT company building a curat
 ### Step 1 — Problems
 
 ```json
-
-```
