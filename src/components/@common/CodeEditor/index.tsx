@@ -2,16 +2,19 @@ import { memo, useState } from "react";
 import Editor from "@monaco-editor/react";
 import { useGlobalState } from "@/contexts/global";
 import { THEME } from "@/constants/ui-preferences.contants";
+import { EDITOR_LANGUAGE } from "./constants";
 import { utils } from "@/utils";
+import type { TEditorLanguage } from "./types";
 import { Button, Flex } from "antd";
 import { CopyOutlined, CheckOutlined } from "@ant-design/icons";
 import styles from "./styles.module.scss";
 
 type TProps = {
   code: string;
+  language?: TEditorLanguage;
 };
 
-function JsonViewer({ code }: TProps) {
+function CodeViewer({ code, language = EDITOR_LANGUAGE.JAVASCRIPT }: TProps) {
   const {
     state: {
       uiPreferences: { theme },
@@ -44,7 +47,7 @@ function JsonViewer({ code }: TProps) {
 
       <Editor
         height={height}
-        defaultLanguage="json"
+        defaultLanguage={language}
         value={code}
         theme={isDarkMode ? "vs-dark" : "vs-light"}
         onMount={(editor) => {
@@ -67,12 +70,9 @@ function JsonViewer({ code }: TProps) {
         }}
         options={{
           fontFamily: "Martian Mono",
-          readOnly: true,
-          domReadOnly: true,
           minimap: { enabled: false },
           fontSize: 14,
           wordWrap: "on",
-          automaticLayout: true,
           scrollBeyondLastLine: false,
           tabSize: 2,
           scrollbar: {
@@ -84,4 +84,4 @@ function JsonViewer({ code }: TProps) {
   );
 }
 
-export default memo(JsonViewer);
+export default memo(CodeViewer);

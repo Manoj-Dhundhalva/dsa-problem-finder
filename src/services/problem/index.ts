@@ -23,7 +23,7 @@ export class ProblemService {
 
   async getFilteredProblems(payload: TFilterState): Promise<TProblem[]> {
     try {
-      const { data } = await this.apiService.api.post(this.ENDPOINTS.FILTER_PROBLEMS, { payload });
+      const { data } = await this.apiService.api.post(this.ENDPOINTS.FILTER_PROBLEMS, payload);
       return data;
     } catch (error) {
       console.error("Failed to fetch filtered problems:", error);

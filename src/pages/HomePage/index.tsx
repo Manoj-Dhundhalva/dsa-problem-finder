@@ -1,10 +1,12 @@
 import { memo, useState } from "react";
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, RATING, SORT_FIELDS, SORT_ORDER } from "./constants";
 import { utils } from "@/utils";
+import { EDITOR_LANGUAGE } from "@/components/@common/CodeEditor/constants";
+import { helpers } from "@/helpers";
 import type { TFilterState } from "./types";
-import { JsonViewer } from "@/components/@common";
+import { CodeEditor } from "@/components/@common";
 import { RatingField, TagsField, StartTimeField, SortField, OffsetField, LimitField } from "./components";
-import { Flex, Form } from "antd";
+import { Button, Flex, Form } from "antd";
 
 function HomePage() {
   const [filterState, setFilterState] = useState<TFilterState>(() => ({
@@ -19,6 +21,9 @@ function HomePage() {
     limit: DEFAULT_LIMIT,
   }));
 
+  const [markdown, setMarkdown] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleFieldChange =
     <K extends keyof TFilterState>(key: K) =>
     (updater: (value: TFilterState[K]) => TFilterState[K]) => {
@@ -27,6 +32,13 @@ function HomePage() {
         [key]: updater(prev[key]),
       }));
     };
+
+  const handleFetchFilteredProblems = async () => {
+    setIsLoading(true);
+    const data = await helpers.prompt.getPrompt(filterState);
+    setIsLoading(false);
+    setMarkdown(data);
+  };
 
   return (
     <Flex vertical>
@@ -56,7 +68,17 @@ function HomePage() {
         </Form.Item>
       </Form>
 
-      <JsonViewer code={JSON.stringify(filterState, null, 2)} />
+      <Button
+        color="default"
+        variant="solid"
+        onClick={handleFetchFilteredProblems}
+        loading={isLoading}
+        disabled={isLoading}
+      >
+        Generate
+      </Button>
+
+      <CodeEditor code={markdown} language={EDITOR_LANGUAGE.MARKDOWN} />
     </Flex>
   );
 }
