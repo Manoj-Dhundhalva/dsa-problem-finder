@@ -1,7 +1,6 @@
 import { memo, useState } from "react";
 import { DEFAULT_LIMIT, DEFAULT_OFFSET, RATING, SORT_FIELDS, SORT_ORDER } from "./constants";
 import { utils } from "@/utils";
-import { EDITOR_LANGUAGE } from "@/components/@common/CodeEditor/constants";
 import { helpers } from "@/helpers";
 import type { TFilterState } from "./types";
 import { CodeEditor } from "@/components/@common";
@@ -78,7 +77,7 @@ function HomePage() {
         Generate
       </Button>
 
-      <CodeEditor code={markdown} language={EDITOR_LANGUAGE.MARKDOWN} />
+      <CodeEditor markdown={markdown} setMarkdown={(data: string) => setMarkdown(data)} />
     </Flex>
   );
 }
