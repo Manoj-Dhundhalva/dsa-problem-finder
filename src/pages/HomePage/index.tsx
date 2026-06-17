@@ -34,6 +34,7 @@ function HomePage() {
 
   const handleFetchFilteredProblems = async () => {
     setIsLoading(true);
+    setMarkdown("");
     const data = await helpers.prompt.getPrompt(filterState);
     setIsLoading(false);
     setMarkdown(data);
