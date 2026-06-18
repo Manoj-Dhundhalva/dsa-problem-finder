@@ -59,11 +59,17 @@ function HomePage() {
           <SortField sort={filterState.sort} onChange={handleFieldChange("sort")} />
         </Form.Item>
 
-        <Form.Item label="Offset">
+        <Form.Item
+          label="Offset"
+          tooltip="Skips the first N entries from the filtered results. For example, an offset of 20 starts returning results from the 21st entry."
+        >
           <OffsetField offset={filterState.offset} onChange={handleFieldChange("offset")} />
         </Form.Item>
 
-        <Form.Item label="Limit">
+        <Form.Item
+          label="Limit"
+          tooltip="Maximum number of entries to return. For example, a limit of 50 returns up to 50 entries after applying the offset."
+        >
           <LimitField limit={filterState.limit} onChange={handleFieldChange("limit")} />
         </Form.Item>
       </Form>
